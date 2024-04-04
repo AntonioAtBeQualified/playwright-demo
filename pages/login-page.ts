@@ -9,10 +9,10 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.userName = page.locator('data-test=username')
-        this.password = page.locator('data-test=password')
-        this.loginButton = page.locator('data-test=login-button')
-        this.errorMessage = page.locator('error')
+        this.userName = page.locator('[data-test="username"]')
+        this.password = page.locator('data-test=password');
+        this.loginButton = page.locator('[data-test="login-button"]')
+        this.errorMessage = page.locator('[data-test="error"]')
     }
 
     async navigate() {
@@ -29,7 +29,7 @@ export class LoginPage {
         await this.loginButton.click();
 
         if (await expect(this.errorMessage).toBeVisible) {
-            this.login();
+            await this.login();
         } else {
             await this.userName.fill('ERROR');
         }

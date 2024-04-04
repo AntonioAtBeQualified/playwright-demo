@@ -10,11 +10,11 @@ export class ProductPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.burgerMenu = page.locator('id=react-burger-menu')
-        this.logoutButton = page.locator('id=logout_sidebar_link')
-        this.cart = page.locator('id=shopping-cart-container')
-        this.addToCart = page.locator('data-test=add-to-cart-sauce-labs-backpack')
-        this.addToCart = page.locator('data-test=product_sort_container')
+        this.burgerMenu = page.getByRole('button', { name: 'Open Menu' })
+        this.logoutButton = page.locator('[data-test="logout-sidebar-link"]')
+        this.cart = page.locator('[data-test="shopping-cart-link"]')
+        this.addToCart = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]')
+        this.productSortContainer = page.locator('[data-test="product-sort-container"]')
     }
 
     async logout() {
