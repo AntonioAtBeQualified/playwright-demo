@@ -20,16 +20,41 @@ test.describe ('navigate to login', () => {
         await loginPage.checkerror();
     })
     
-    test("Verify Login is Possible", async ({page}) => {
+    test("Verify Login with standard user is Possible", async ({page}) => {
         const loginPage = new LoginPage(page);
-        await loginPage.login();
+        await loginPage.loginWithStandardUser();
     })
 
     test("Verify Logout is Possible", async ({page}) => {
         const loginPage = new LoginPage(page);
         const burgerMenu = new BurgerMenu(page);
-        await loginPage.login();
+        await loginPage.loginWithStandardUser();
         await burgerMenu.logout();
+    })
+
+    test("Verify Login with locked out user is throwing an error as expected", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.loginWithLockedOutUser();
+    })
+
+    test("Verify Login with problem user is Possible", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.loginWithProblemUser();
+    })
+
+    test("Verify Login with performance glitch user is Possible", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.loginWithPerformanceGlichtUser();
+    })
+
+    test("Verify Login with error user is Possible", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.loginWithErrorUser();
+    })
+
+    test("Verify Login with visual user is Possible", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.loginWithVisualUser();
     })
 })
 
