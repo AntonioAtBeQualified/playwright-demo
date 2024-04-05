@@ -1,5 +1,6 @@
 import {test, expect} from '@playwright/test';
 import { LoginPage } from '../pages/login-page';
+import { BurgerMenu } from '../pages/burger-menu';
 
 
 test.describe ('navigate to login', () => {
@@ -11,20 +12,24 @@ test.describe ('navigate to login', () => {
     })
     test("Open LoginPage and verify Title", async ({page}) => {
         const loginPage = new LoginPage(page);
-        await loginPage.navigate();
         await expect(page).toHaveTitle('Swag Labs');
     })
     
     test("login with wrong credentials", async ({page}) => {
         const loginPage = new LoginPage(page);
-        await loginPage.navigate();
         await loginPage.checkerror();
     })
     
     test("Verify Login is Possible", async ({page}) => {
         const loginPage = new LoginPage(page);
-        await loginPage.navigate();
         await loginPage.login();
+    })
+
+    test("Verify Logout is Possible", async ({page}) => {
+        const loginPage = new LoginPage(page);
+        const burgerMenu = new BurgerMenu(page);
+        await loginPage.login();
+        await burgerMenu.logout();
     })
 })
 
