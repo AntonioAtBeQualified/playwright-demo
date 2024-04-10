@@ -9,10 +9,10 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.userName = page.locator('[data-test="username"]')
-        this.password = page.locator('data-test=password');
+        this.userName = page.getByPlaceholder('Username')
+        this.password = page.getByPlaceholder('Password')
         this.loginButton = page.locator('[data-test="login-button"]')
-        this.errorMessage = page.locator('[data-test="error"]')
+        this.errorMessage = page.getByRole('heading', { name: 'Epic sadface: Username is required'})
     }
 
     async navigate() {
