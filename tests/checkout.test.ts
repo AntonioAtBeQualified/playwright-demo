@@ -2,6 +2,9 @@ import {test, expect} from '@playwright/test';
 import { LoginPage } from '../pages/login-page';
 import { ProductPage } from '../pages/product-page';
 import { NavigationMenu } from '../pages/navigation-menu';
+import { CartPage } from '../pages/cart-page';
+import { CheckoutPage } from '../pages/checkout-page';
+import { OverviewPage } from '../pages/overview-page';
 
 
 // Steps to fullfill checkout
@@ -19,16 +22,28 @@ test.describe ('navigate to login', () => {
     test.beforeEach( async ({page}) => {
         const loginPage = new LoginPage(page);
         await loginPage.navigate()
+        await loginPage.loginWithStandardUser();
     })
     test("Happy Path Checkout Test", async ({page}) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.loginWithStandardUser();
+       
 
         const productPage = new ProductPage(page);
-        productPage.addProductToCart();
+        await productPage.addProductToCart();
 
         const navigationMenu = new NavigationMenu(page); 
-        navigationMenu.navigateToCart();
+        await navigationMenu.navigateToCart();
+
+        const cartPage = new CartPage(page);
+        cartPage.checkoutOrder();
+
+        const checkoutPage = new CheckoutPage(page);
+        await checkoutPage.fillInForm();
+        await checkoutPage.clickOnContinueButton();
+        
+        const overviewPage = new OverviewPage(page);
+        await overviewPage.clickOnFinishButton();
+        await navigationMenu.logout();
+
 
     })
 })
