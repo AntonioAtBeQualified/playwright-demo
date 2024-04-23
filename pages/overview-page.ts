@@ -8,9 +8,9 @@ export class OverviewPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.cancelButton = page.locator('data-test=cancel')
-        this.finishButton = page.locator('data-test=finish')
-        this.backHomeButton = page.locator('data-test=back-to-products')
+        this.cancelButton = page.locator('[data-test="cancel"]')
+        this.finishButton = page.locator('[data-test="finish"]')
+        this.backHomeButton = page.locator('[data-test="back-to-products"]')
     }
 
     async clickOnCancelButton() {
