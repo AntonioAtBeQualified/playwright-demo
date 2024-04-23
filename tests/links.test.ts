@@ -1,10 +1,7 @@
 import {test, expect} from '@playwright/test';
-import { LoginPage } from '../pages/login-page';
 import { ProductPage } from '../pages/product-page';
 import { NavigationMenu } from '../pages/navigation-menu';
-import { CartPage } from '../pages/cart-page';
-import { CheckoutPage } from '../pages/checkout-page';
-import { OverviewPage } from '../pages/overview-page';
+
 
 
 test.describe ('Test all Links', () => {

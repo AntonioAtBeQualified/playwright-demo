@@ -10,6 +10,7 @@ test.describe ('navigate to login', () => {
         const loginPage = new LoginPage(page);
         await loginPage.navigate()
     })
+    
     test("Open LoginPage and verify Title", async ({page}) => {
         const loginPage = new LoginPage(page);
         await expect(page).toHaveTitle('Swag Labs');
