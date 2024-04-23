@@ -19,15 +19,10 @@ import { OverviewPage } from '../pages/overview-page';
 test.describe ('navigate to login', () => {
     
     // this test navigates always to the LoginPage for every Test
-    test.beforeEach( async ({page}) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.navigate()
-        await loginPage.loginWithStandardUser();
-    })
+    
     test("Happy Path Checkout Test", async ({page}) => {
-       
-
         const productPage = new ProductPage(page);
+        await productPage.navigate();
         await productPage.addProductToCart();
 
         const navigationMenu = new NavigationMenu(page); 

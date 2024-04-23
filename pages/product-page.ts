@@ -17,6 +17,10 @@ export class ProductPage {
         this.productSortContainer = page.locator('[data-test="product-sort-container"]')
     }
 
+    async navigate() {
+        await this.page.goto('https://www.saucedemo.com/inventory.html');
+    }
+
     async logout() {
         await this.burgerMenu.click();
         await this.logoutButton.click();
