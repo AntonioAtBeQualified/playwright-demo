@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page} from '@playwright/test'
+const testData = JSON.parse(JSON.stringify(require("../.auth/user.json")))
 
 export class LoginPage {
     page: Page;
@@ -15,44 +16,45 @@ export class LoginPage {
         this.errorMessage = page.getByRole('heading', { name: 'Epic sadface: Username is required'})
     }
 
+
     async navigate() {
         await this.page.goto('/');
     }
 
     async loginWithStandardUser() {
-        await this.userName.fill('standard_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.standardUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
     }
 
     async loginWithLockedOutUser() {
-        await this.userName.fill('locked_out_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.lockedOutUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
         await expect(this.errorMessage).toBeVisible;
     }
 
     async loginWithProblemUser() {
-        await this.userName.fill('problem_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.problemUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
     }
 
     async loginWithPerformanceGlichtUser() {
-        await this.userName.fill('performance_glitch_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.performanceGlitchUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
     }
 
     async loginWithErrorUser() {
-        await this.userName.fill('error_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.errorUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
     }
 
     async loginWithVisualUser() {
-        await this.userName.fill('visual_user');
-        await this.password.fill('secret_sauce');
+        await this.userName.fill(testData.visualUser);
+        await this.password.fill(testData.password);
         await this.loginButton.click();
     }
 
