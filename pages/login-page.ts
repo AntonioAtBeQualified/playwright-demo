@@ -1,5 +1,4 @@
 import { expect, type Locator, type Page} from '@playwright/test'
-const testData = JSON.parse(JSON.stringify(require("../.auth/user.json")))
 
 export class LoginPage {
     page: Page;
@@ -22,39 +21,39 @@ export class LoginPage {
     }
 
     async loginWithStandardUser() {
-        await this.userName.fill(testData.standardUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("standard_user");
+        await this.password.fill("secret_sauce");
         await this.loginButton.click();
     }
 
     async loginWithLockedOutUser() {
-        await this.userName.fill(testData.lockedOutUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("testData.lockedOutUser");
+        await this.password.fill("testData.password");
         await this.loginButton.click();
         await expect(this.errorMessage).toBeVisible;
     }
 
     async loginWithProblemUser() {
-        await this.userName.fill(testData.problemUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("testData.problemUser");
+        await this.password.fill("");
         await this.loginButton.click();
     }
 
     async loginWithPerformanceGlichtUser() {
-        await this.userName.fill(testData.performanceGlitchUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("");
+        await this.password.fill("");
         await this.loginButton.click();
     }
 
     async loginWithErrorUser() {
-        await this.userName.fill(testData.errorUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("testData.errorUser");
+        await this.password.fill("testData.password");
         await this.loginButton.click();
     }
 
     async loginWithVisualUser() {
-        await this.userName.fill(testData.visualUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill("testData.visualUser");
+        await this.password.fill("testData.password");
         await this.loginButton.click();
     }
 
