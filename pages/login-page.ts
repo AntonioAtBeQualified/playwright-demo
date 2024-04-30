@@ -21,39 +21,39 @@ export class LoginPage {
     }
 
     async loginWithStandardUser() {
-        await this.userName.fill("standard_user");
-        await this.password.fill("secret_sauce");
+        await this.userName.fill(process.env.STANDARD_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 
     async loginWithLockedOutUser() {
-        await this.userName.fill("testData.lockedOutUser");
-        await this.password.fill("testData.password");
+        await this.userName.fill(process.env.LOCKED_OUT_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
         await expect(this.errorMessage).toBeVisible;
     }
 
     async loginWithProblemUser() {
-        await this.userName.fill("testData.problemUser");
-        await this.password.fill("");
+        await this.userName.fill(process.env.PROBLEM_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 
     async loginWithPerformanceGlichtUser() {
-        await this.userName.fill("");
-        await this.password.fill("");
+        await this.userName.fill(process.env.PERFORMANCE_GLITCH_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 
     async loginWithErrorUser() {
-        await this.userName.fill("testData.errorUser");
-        await this.password.fill("testData.password");
+        await this.userName.fill(process.env.ERROR_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 
     async loginWithVisualUser() {
-        await this.userName.fill("testData.visualUser");
-        await this.password.fill("testData.password");
+        await this.userName.fill(process.env.VISUAL_USER as string);
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 

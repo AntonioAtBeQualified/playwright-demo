@@ -8,7 +8,6 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "test": "npx playwright test --workers=4"
-    
   },
   "keywords": [],
   "author": "",
@@ -26,10 +25,10 @@
     "globals": "^15.1.0",
     "husky": "^9.0.11",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0"
+    "typescript-eslint": "^6.21.0"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "eslint": "^7.8.0"
+    "eslint": "^6.21.0"
   }
 }
