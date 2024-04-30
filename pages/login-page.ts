@@ -1,5 +1,7 @@
 import { expect, type Locator, type Page} from '@playwright/test'
 const testData = JSON.parse(JSON.stringify(require("../.auth/user.json")))
+const standardUser = process.env.STANDARD_USER as string;
+const password = process.env.PASSWORD as string;
 
 export class LoginPage {
     page: Page;
@@ -22,8 +24,8 @@ export class LoginPage {
     }
 
     async loginWithStandardUser() {
-        await this.userName.fill(testData.standardUser);
-        await this.password.fill(testData.password);
+        await this.userName.fill(standardUser);
+        await this.password.fill(password);
         await this.loginButton.click();
     }
 
