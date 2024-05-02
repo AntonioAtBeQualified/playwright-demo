@@ -2,4 +2,7 @@ node_modules
 test-results
 playwright-report
 .auth/**
-user.env
+.env
+playwright/
+.husky/**
+.husky/pre-commit
