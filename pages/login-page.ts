@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page} from '@playwright/test'
+import { env } from 'process';
 
 export class LoginPage {
     page: Page;
@@ -22,7 +23,7 @@ export class LoginPage {
 
     async loginWithStandardUser() {
         await this.userName.fill(process.env.STANDARD_USER as string);
-        await this.password.fill(process.env.PASSWORD as string);
+        await this.password.fill("secret_sauce");
         await this.loginButton.click();
     }
 
