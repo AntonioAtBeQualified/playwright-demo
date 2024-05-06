@@ -23,7 +23,7 @@ export class LoginPage {
 
     async loginWithStandardUser() {
         await this.userName.fill(process.env.STANDARD_USER as string);
-        await this.password.fill("secret_sauce");
+        await this.password.fill(process.env.PASSWORD as string);
         await this.loginButton.click();
     }
 

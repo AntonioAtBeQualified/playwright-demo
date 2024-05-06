@@ -1,7 +1,10 @@
 import { test as setup, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login-page';
 
-const authFile = 'playwright/.auth/user.json';
+const standard_user = 'playwright/.auth/standard_user.json';
+const problem_user = 'playwright/.auth/problem_user.json';
+const error_user = 'playwright/.auth/error_user.json';
+const visual_user = 'playwright/.auth/visual_user.json';
 
 setup('authenticate as standard user', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
@@ -17,14 +20,14 @@ setup('authenticate as standard user', async ({ page }) => {
 
   // End of authentication steps.
 
-  await page.context().storageState({ path: authFile });
+  await page.context().storageState({ path: standard_user });
 });
 
 setup('authenticate as problem user', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
   await page.goto('https://www.saucedemo.com');
   const loginPage = new LoginPage(page);
-  await loginPage.loginWithStandardUser();
+  await loginPage.loginWithProblemUser();
 
   // Wait until the page receives the cookies.
   //
@@ -34,14 +37,14 @@ setup('authenticate as problem user', async ({ page }) => {
 
   // End of authentication steps.
 
-  await page.context().storageState({ path: authFile });
+  await page.context().storageState({ path: problem_user });
 });
 
 setup('authenticate as error user', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
   await page.goto('https://www.saucedemo.com');
   const loginPage = new LoginPage(page);
-  await loginPage.loginWithStandardUser();
+  await loginPage.loginWithErrorUser();
 
   // Wait until the page receives the cookies.
   //
@@ -51,14 +54,14 @@ setup('authenticate as error user', async ({ page }) => {
 
   // End of authentication steps.
 
-  await page.context().storageState({ path: authFile });
+  await page.context().storageState({ path: error_user });
 });
 
 setup('authenticate as visual user', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
   await page.goto('https://www.saucedemo.com');
   const loginPage = new LoginPage(page);
-  await loginPage.loginWithStandardUser();
+  await loginPage.loginWithVisualUser();
 
   // Wait until the page receives the cookies.
   //
@@ -68,5 +71,5 @@ setup('authenticate as visual user', async ({ page }) => {
 
   // End of authentication steps.
 
-  await page.context().storageState({ path: authFile });
+  await page.context().storageState({ path: visual_user });
 });
